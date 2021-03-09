@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await Sequelize.createTable('tbl_debit', {
+    await queryInterface.createTable('tbl_debit', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false,
       },
       debitValue: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       created_at: {
