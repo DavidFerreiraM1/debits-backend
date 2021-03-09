@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    container_name: app
+    command: dockerize -wait tcp://:123456@debits_db:5432/postgres -timeout 40s -template ./.docker/.env.template:.env ./.docker/entrypoint.sh
+    environment:
+      - PORT=3001
+      - DB_HOST=debits_db
+      - DB_USER=debits_app
+      - DB_PASSWORD=123456
+      - DB_NAME=debits_db
+    volumes:
+      - .:/debits_app
+    ports:
+      - 3001:3001
+    networks:
+      - app-networks
+    depends_on:
+      - debits_db
+
+  debits_db:
+    image: postgres
+    container_name: debits_db
+    restart: always
+    tty: true
+    volumes:
+      - ./.docker/dbdata:/var/lib/postgresql/data
+    networks:
+      - app-networks
+    environment:
+      - POSTGRES_USER=debits_app
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - "5432:5432"
+
+networks:
+  app-networks:
+    driver: bridge
