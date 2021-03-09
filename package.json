@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon ./src/server.ts --ignore __tests__/**/*.test.ts",
+    "build": "tsc",
+    "prod": "node dist/server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -11,12 +17,6 @@
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
     "sequelize": "^6.5.0"
-  },
-  "scripts": {
-    "test": "jest",
-    "dev": "nodemon ./src/server.ts --ignore __tests__/**/*.test.ts",
-    "build": "tsc",
-    "prod": "node dist/server.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
