@@ -1,15 +1,11 @@
 import { Response } from 'express';
 
 export function dataResponse<T>(
-    statusCode: number,
-    success: boolean,
-    errors: Array<string>,
     data: T,
+    errors: Array<string> | null
   )  {
   return ({
-    statusCode,
     data,
-    success,
     errors,
   })
 };
