@@ -10,17 +10,17 @@ export class DebitValidation extends AbstractValidation<IDebit> {
   protected validate(debit: IDebit): void {
     const { userId, reason, debitDate, debitValue } = debit;
 
-    this.isNotEmpty(userId);
-    this.isNotEmpty(reason);
-    this.isNotEmpty(debitDate);
-    this.isNotEmpty(debitValue);
+    this.isNotEmpty(userId, 'UserId é obrigatório!');
+    this.isNotEmpty(reason, 'A razão da dívida precisa ser informada!');
+    this.isNotEmpty(debitDate, 'A data do débito é obrigatória!');
+    this.isNotEmpty(debitValue, 'O valor do débito precisa ser informado!');
 
     this.checkAndSetValidation();
   }
 
-  private isNotEmpty(value: string | number): void {
+  private isNotEmpty(value: string | number, msg: string): void {
     if (!value) {
-      this.setError('Valor não pode ser vazio!');
+      this.setError(msg);
     }
   }
 }
