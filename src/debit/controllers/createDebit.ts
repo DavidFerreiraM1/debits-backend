@@ -4,6 +4,8 @@ import { dataResponse } from '../../shared/utils/data-response';
 import { IDebit } from '../interfaces/debit.interface';
 import { DebitValidation } from '../validations/debit';
 
+import  createDebitRepository from '../repositories/createDebit';
+
 class CreateDebit implements IController {
   async run(req: Request, res: Response): Promise<Response> {
     try {
@@ -14,9 +16,11 @@ class CreateDebit implements IController {
         return res.status(400).send(dataResponse<null>(null, errors));
       }
 
-      return res.status(201);
+      const newDebit = await createDebitRepository.run(body);
+      return res.status(200).send(dataResponse<IDebit>(newDebit, null));
 
     } catch (err) {
+      console.log(err)
       return res.status(500).send(err);
     }
   }
