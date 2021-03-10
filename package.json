@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
     "expree": "^0.0.7",
     "moment": "^2.29.1",
