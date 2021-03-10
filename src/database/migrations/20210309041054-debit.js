@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         allowNull: false
       },
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -17,11 +17,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      debitDate: {
+      debit_date: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      debitValue: {
+      debit_value: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
