@@ -20,7 +20,6 @@ class CreateDebit implements IController {
       return res.status(200).send(dataResponse<IDebit>(newDebit, null));
 
     } catch (err) {
-      console.log(err)
       return res.status(500).send(err);
     }
   }
