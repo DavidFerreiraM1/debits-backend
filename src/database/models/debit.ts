@@ -8,6 +8,7 @@ export class Debit extends AbsctractModel implements IDebit {
   reason!: string;
   debitDate!: string;
   debitValue!: number;
+  active!: boolean;
 
   static initializer(sequelize: any) {
     this.init({
@@ -33,6 +34,11 @@ export class Debit extends AbsctractModel implements IDebit {
         type: DataTypes.NUMBER,
         allowNull: false,
       },
+      active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      }
     },{
       tableName: 'tbl_debit',
       sequelize,
