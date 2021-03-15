@@ -1,4 +1,4 @@
-# debits-backend
+# Debits-backend
 
 A aplicação consiste em um backend para uma aplicação web que permite que um usuário faça o gerencimento básico de dívidas (CRUD).
 
